@@ -7,5 +7,6 @@ defmodule PlayertrackerApiWeb.Router do
 
   scope "/api", PlayertrackerApiWeb do
     pipe_through :api
+    get "/players", PlayerController, :players
   end
 end

@@ -33,6 +33,7 @@ defmodule PlayertrackerApi.MixProject do
   # Type `mix help deps` for examples and options.
   defp deps do
     [
+      {:cors_plug, "~> 1.2"},
       {:phoenix, "~> 1.4.7"},
       {:phoenix_pubsub, "~> 1.1"},
       {:phoenix_ecto, "~> 4.0"},
@@ -40,7 +41,8 @@ defmodule PlayertrackerApi.MixProject do
       {:postgrex, ">= 0.0.0"},
       {:gettext, "~> 0.11"},
       {:jason, "~> 1.0"},
-      {:plug_cowboy, "~> 2.0"}
+      {:plug_cowboy, "~> 2.0"},
+      {:nba_ex, "~> 0.1.2"}
     ]
   end
 

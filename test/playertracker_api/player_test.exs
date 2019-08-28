@@ -5,18 +5,20 @@ defmodule PlayertrackerApi.PlayerTest do
 
   describe "all/0" do
     test "should return all franchise NBA players" do
-      first_player = Player.all() |> List.first()
-      |> IO.inspect
+      players = Player.all()
+      first_player = players |> List.first()
 
-      assert first_player.id == "1627826"
-      assert first_player.firstName == "Ivica"
-      assert first_player.lastName == "Zubac"
-      assert first_player.number == "40"
-      assert first_player.position == "C"
-      assert first_player.tricode == "GSW"
-      assert first_player.teamColor == "#000"
-      
-      assert Player.all() |> length == 499
+      assert first_player == %{
+                                firstName: "Ivica",
+                                id: "1627826",
+                                lastName: "Zubac",
+                                number: "40",
+                                position: "C",
+                                teamId: "1610612746",
+                                teamColor: "#ed174b",
+                                tricode: "LAC"
+                              }
+      assert players |> length == 522
     end
   end
 end

@@ -45,6 +45,8 @@ defmodule PlayertrackerApi.Player do
   defp find_team_info(team_info, player), 
     do: Enum.find(team_info, fn team -> team["teamId"] == player["teamId"] end)
 
-  defp filter_out_non_franchise_players(players), 
-    do: Enum.filter(players, fn player -> player["teamId"] != "" end)
+  def filter_out_non_franchise_players(players), 
+    do: Enum.filter(players, fn player -> 
+      player["teamId"] != "" && player["jersey"] != ""
+    end)
 end

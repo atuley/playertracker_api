@@ -5,6 +5,10 @@ defmodule PlayertrackerApi.Player do
     |> trim_player_payload()
   end
 
+  def details(ids) do
+    %{name: "Steph"}
+  end
+
   defp fetch_all_players() do
     %{"league" => %{"standard" => players }} = 
       HTTPoison.get!("http://data.nba.net/prod/v1/2019/players.json")

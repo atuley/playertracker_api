@@ -33,9 +33,9 @@ defmodule PlayertrackerApiWeb.Endpoint do
   plug Plug.Head
 
   plug CORSPlug,
-  origin: [
-    "http://localhost:1234"
-  ]
+    origin: [
+      "http://localhost:1234"
+    ]
 
   # The session will be stored in the cookie and signed,
   # this means its contents can be read but not tampered with.

@@ -10,10 +10,11 @@ defmodule PlayertrackerApi.Player do
   end
 
   defp fetch_all_players() do
-    %{"league" => %{"standard" => players }} = 
+    %{"league" => %{"standard" => players}} =
       HTTPoison.get!("http://data.nba.net/prod/v1/2019/players.json")
       |> Map.get(:body)
       |> Jason.decode!()
+
     players
   end
 
@@ -22,6 +23,7 @@ defmodule PlayertrackerApi.Player do
       HTTPoison.get!("http://data.nba.net/prod/2019/teams_config.json")
       |> Map.get(:body)
       |> Jason.decode!()
+
     team_info
   end
 
@@ -32,7 +34,7 @@ defmodule PlayertrackerApi.Player do
     |> Enum.reduce([], fn player, acc ->
       player_team_info = team_info |> find_team_info(player)
 
-  		trimmed_player = %{
+      trimmed_player = %{
         id: player["personId"],
         firstName: player["firstName"],
         lastName: player["lastName"],
@@ -42,15 +44,17 @@ defmodule PlayertrackerApi.Player do
         tricode: player_team_info["tricode"],
         teamColor: player_team_info["primaryColor"]
       }
-	    [ trimmed_player | acc ]
-  	end)
+
+      [trimmed_player | acc]
+    end)
   end
 
-  defp find_team_info(team_info, player), 
+  defp find_team_info(team_info, player),
     do: Enum.find(team_info, fn team -> team["teamId"] == player["teamId"] end)
 
-  def filter_out_non_franchise_players(players), 
-    do: Enum.filter(players, fn player -> 
-      player["teamId"] != "" && player["jersey"] != ""
-    end)
+  def filter_out_non_franchise_players(players),
+    do:
+      Enum.filter(players, fn player ->
+        player["teamId"] != "" && player["jersey"] != ""
+      end)
 end

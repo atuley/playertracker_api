@@ -7,7 +7,7 @@ defmodule PlayertrackerApiWeb.PlayerControllerTest do
   end
 
   test "POST /api/details", %{conn: conn} do
-    conn = post(conn, "/api/details", %{"ids" => ["1"]})
+    conn = post(conn, "/api/details", %{"ids" => ["1627826"]})
     assert json_response(conn, 200)
   end
 end

@@ -25,22 +25,24 @@ defmodule PlayertrackerApi.PlayerTest do
 
   describe "details/1" do
     test "should return details for players last played game" do
-      assert Player.details(["1"]) == %{
+      details = Player.details(["1627826"])
+
+      assert List.first(details) == %{
+               assists: "0",
+               blocks: "1",
                firstName: "Ivica",
                id: "1627826",
                lastName: "Zubac",
+               minutes: "2:25",
                number: "40",
-               position: "C",
+               points: "0",
+               position: "",
+               rebounds: "1",
+               steals: "0",
                teamId: "1610612746",
+               turnovers: "0",
                teamColor: "#ed174b",
-               tricode: "LAC",
-               points: "32",
-               assists: "8",
-               rebounds: "9",
-               steals: "1",
-               blocks: "1",
-               turnovers: "3",
-               minutes: "10"
+               tricode: "LAC"
              }
     end
   end
